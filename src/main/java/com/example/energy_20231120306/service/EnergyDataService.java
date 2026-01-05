@@ -7,6 +7,7 @@ import com.example.energy_20231120306.vo.EnergyOverviewVO;
 import com.example.energy_20231120306.vo.EnergyRealtimeVO;
 import com.example.energy_20231120306.vo.EnergyStatisticsVO;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface EnergyDataService extends IService<EnergyData> {
     List<EnergyStatisticsVO> statistics(Long deviceId, String type);
 
     EnergyRealtimeVO realtime(Long deviceId);
+
+    BigDecimal getLastTotalEnergy(Long id);
 }

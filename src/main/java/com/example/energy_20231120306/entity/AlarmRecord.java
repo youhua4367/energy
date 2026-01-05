@@ -29,4 +29,8 @@ public class AlarmRecord implements Serializable {
     private String alarmDesc;
     // 告警时间
     private LocalDateTime triggerTime;
+    // 0-未处理 1-已处理
+    private Integer status;
+    // 处理时间
+    private LocalDateTime handleTime;
 }

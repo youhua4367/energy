@@ -188,4 +188,26 @@ public class EnergyDataServiceImpl extends ServiceImpl<EnergyDataMapper, EnergyD
                 .collectTime(data.getCollectTime())
                 .build();
     }
+
+    /**
+     * 获取单个设备上次的累计功率
+     * @param deviceId 设备id
+     * @return 功率值
+     */
+    @Override
+    public BigDecimal getLastTotalEnergy(Long deviceId) {
+        // 查询该设备最近一次采集记录
+        EnergyData lastRecord = lambdaQuery()
+                .eq(EnergyData::getDeviceId, deviceId)
+                .orderByDesc(EnergyData::getCollectTime)
+                .last("LIMIT 1") // 取最近一条
+                .one();
+
+        if (lastRecord != null && lastRecord.getTotalEnergy() != null) {
+            return lastRecord.getTotalEnergy();
+        }
+
+        // 如果没有记录，返回0
+        return BigDecimal.ZERO;
+    }
 }
