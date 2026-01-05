@@ -30,7 +30,7 @@ class EnergySimulateTask {
     /**
      * 每 5 秒模拟一次设备能耗上报
      */
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 60 * 60 * 1000)
     public void simulateEnergyCollect() {
         // 只模拟启用状态的设备
         List<Device> devices = deviceService.lambdaQuery()
