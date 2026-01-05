@@ -19,7 +19,7 @@ public class JwtUtil {
      * @param claims    设置的信息
      * @return token
      */
-    public static String createJWT(String secretKey, long ttlMillis, Map<String, Object> claims) {
+    public static String createJWT(String secretKey, long ttlMillis, Map<String, Object> claims, String subject) {
         // 生成安全的 SecretKey
         SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 
@@ -30,6 +30,7 @@ public class JwtUtil {
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(exp)
+                .setSubject(subject)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }

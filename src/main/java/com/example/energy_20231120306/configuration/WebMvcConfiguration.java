@@ -12,20 +12,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Slf4j
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
-    @Autowired
-    private JwtTokenInterceptor jwtTokenInterceptor;
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        log.info("开始注册自定义拦截器...");
-        registry.addInterceptor(jwtTokenInterceptor)
-                .addPathPatterns("/test/**")
-                .excludePathPatterns(
-                        "/user/user/login",
-                        "/user/user/register",
-                        "/swagger-ui/**",
-                        "/v3/api-docs/**",
-                        "/user/user/auth"
-                );
-    }
+//    @Autowired
+//    private JwtTokenInterceptor jwtTokenInterceptor;
+//
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        log.info("开始注册自定义拦截器...");
+//        registry.addInterceptor(jwtTokenInterceptor)
+//                .addPathPatterns("/user/**")
+//                .excludePathPatterns(
+//                        "/user/user/login",
+//                        "/user/user/register",
+//                        "/swagger-ui/**",
+//                        "/v3/api-docs/**"
+//                );
+//    }
 }
